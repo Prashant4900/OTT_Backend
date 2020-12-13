@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Platform, Language, Genres, SubTitles, ShowsList, SeasonsList, EpisodeList
+from .models import *
 from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 
 
@@ -59,7 +59,7 @@ class SeasonListAdmin(admin.ModelAdmin):
 
 
 class EpisodeListAdmin(admin.ModelAdmin):
-    filter_horizontal = ('Season',)
+    # filter_horizontal = ('Season',)
     list_display = ('id', 'EpisodeTitle')
     list_display_links = ('id', 'EpisodeTitle')
     list_filter = (

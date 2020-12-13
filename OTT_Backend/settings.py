@@ -24,6 +24,7 @@ SECRET_KEY = '7x0_)d2=kaw*5pr*!k@mr^*cu#@(3($)bt*m(^yf_b$jsqns&3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+USE_DJANGO_JQUERY = True
 
 ALLOWED_HOSTS = [
     '*',

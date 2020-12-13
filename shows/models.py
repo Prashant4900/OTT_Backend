@@ -1,30 +1,35 @@
 from django.db import models
+from smart_selects.db_fields import (
+    ChainedForeignKey,
+    ChainedManyToManyField,
+    GroupedForeignKey,
+)
 
 
 # Create your models here.
 class Platform(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, verbose_name='Platform Title')
 
     def __str__(self):
         return self.name
 
 
 class Language(models.Model):
-    language = models.CharField(max_length=50)
+    language = models.CharField(max_length=50, verbose_name='Audio Title')
 
     def __str__(self):
         return self.language
 
 
 class Genres(models.Model):
-    genres = models.CharField(max_length=50)
+    genres = models.CharField(max_length=50, verbose_name='Category Title')
 
     def __str__(self):
         return self.genres
 
 
 class SubTitles(models.Model):
-    subTitle = models.CharField(max_length=50)
+    subTitle = models.CharField(max_length=50, verbose_name='Sub Title')
 
     def __str__(self):
         return self.subTitle
@@ -70,7 +75,7 @@ class EpisodeList(models.Model):
     EpisodeLink = models.URLField()
     EpisodeReleaseDate = models.DateTimeField()
     Show = models.ForeignKey(ShowsList, on_delete=models.CASCADE, related_name='Show', default='')
-    Season = models.ManyToManyField(SeasonsList, related_name='Season', limit_choices_to={'Series': True})
+    Season = ChainedManyToManyField(SeasonsList, horizontal=True, related_name='Season', chained_field='Show', chained_model_field='Series')
 
     def __str__(self):
         return self.EpisodeTitle
