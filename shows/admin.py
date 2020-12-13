@@ -7,21 +7,29 @@ from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 class PlatformAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     list_display_links = ('id', 'name')
+    search_fields = ('name',)
+    list_per_page = 50
 
 
 class LanguageAdmin(admin.ModelAdmin):
     list_display = ('id', 'language')
     list_display_links = ('id', 'language')
+    search_fields = ('language',)
+    list_per_page = 50
 
 
 class SubTitleAdmin(admin.ModelAdmin):
     list_display = ('id', 'subTitle')
     list_display_links = ('id', 'subTitle')
+    search_fields = ('subTitle',)
+    list_per_page = 50
 
 
 class GenreAdmin(admin.ModelAdmin):
     list_display = ('id', 'genres')
     list_display_links = ('id', 'genres')
+    search_fields = ('genres',)
+    list_per_page = 50
 
 
 class ShowsAdmin(admin.ModelAdmin):
@@ -46,6 +54,7 @@ class ShowsAdmin(admin.ModelAdmin):
             'fields': ('Banner', 'Popular', 'Audio', 'platform', 'SubTitle'),
         }),
     )
+    list_per_page = 50
 
 
 class SeasonListAdmin(admin.ModelAdmin):
@@ -56,10 +65,10 @@ class SeasonListAdmin(admin.ModelAdmin):
         ('Series', RelatedDropdownFilter),
     )
     search_fields = ('SeasonTitle', 'Series', 'SeasonReleaseDate')
+    list_per_page = 50
 
 
 class EpisodeListAdmin(admin.ModelAdmin):
-    # filter_horizontal = ('Season',)
     list_display = ('id', 'EpisodeTitle')
     list_display_links = ('id', 'EpisodeTitle')
     list_filter = (
@@ -67,6 +76,7 @@ class EpisodeListAdmin(admin.ModelAdmin):
         ('Show', RelatedDropdownFilter),
     )
     search_fields = ('EpisodeTitle', 'EpisodeReleaseDate', 'EpisodeDesc', 'EpisodeLink')
+    list_per_page = 50
 
 
 admin.site.register(Platform, PlatformAdmin)

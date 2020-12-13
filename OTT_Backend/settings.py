@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'searchableselect',
     'django_admin_listfilter_dropdown',
+    'admin_reorder',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +55,36 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
 ]
+
+ADMIN_REORDER = (
+    # Keep original label and models
+    'sites',
+
+    # Rename app
+    # {'app': 'auth', 'label': 'Authorisation'},
+
+    # Reorder app models
+    {'app': 'auth', 'models': ('auth.User', 'auth.Group')},
+
+    {
+        'label': 'Stuff',
+        'app': 'shows',
+        'models': (
+            'shows.Genres', 'shows.Platform', 'shows.Language', 'shows.SubTitles'
+        )
+    },
+
+    {
+        'label': 'Shows',
+        'app': 'shows',
+        'models': (
+            'shows.ShowsList', 'shows.SeasonsList', 'shows.EpisodeList'
+        )
+    },
+
+)
 
 ROOT_URLCONF = 'OTT_Backend.urls'
 
@@ -80,6 +110,7 @@ WSGI_APPLICATION = 'OTT_Backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# For sqlite3
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
