@@ -30,7 +30,7 @@ WHITENOISE_USE_FINDERS = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'freelystream.herokuapp.com',
+    'openlystream.herokuapp.com',
 ]
 
 
@@ -116,26 +116,26 @@ WSGI_APPLICATION = 'OTT_Backend.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 # For sqlite3
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dshn641m95f0u',
-        'USER': 'erikaoqmcafllh',
-        'PASSWORD': '0fa4c7ab04c9b571fdfe9892df7e140dd761e0a37ba3363e3e69d5124a877e6e',
-        'HOST': 'ec2-54-247-122-209.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dshn641m95f0u',
+#         'USER': 'erikaoqmcafllh',
+#         'PASSWORD': '0fa4c7ab04c9b571fdfe9892df7e140dd761e0a37ba3363e3e69d5124a877e6e',
+#         'HOST': 'ec2-54-247-122-209.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+#
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 
 # Password validation
