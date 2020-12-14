@@ -126,11 +126,11 @@ WSGI_APPLICATION = 'OTT_Backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ott_backend',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '*',
-        'PORT': '',
+        'NAME': 'dshn641m95f0u',
+        'USER': 'erikaoqmcafllh',
+        'PASSWORD': '0fa4c7ab04c9b571fdfe9892df7e140dd761e0a37ba3363e3e69d5124a877e6e',
+        'HOST': 'ec2-54-247-122-209.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
