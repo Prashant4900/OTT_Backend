@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '7x0_)d2=kaw*5pr*!k@mr^*cu#@(3($)bt*m(^yf_b$jsqns&3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 USE_DJANGO_JQUERY = True
 WHITENOISE_USE_FINDERS = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
