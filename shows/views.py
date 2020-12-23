@@ -1,15 +1,16 @@
+from django.shortcuts import render
+
 from .models import Language, Genres, SubTitles, ShowsList, SeasonsList, EpisodeList
 from .serializer import ShowsSerializer, SeasonsSerializer, EpisodeSerializer, LanguageSerializer, GenresSerializer, \
     SubTitlesSerializer
 from rest_framework.response import Response
 from rest_framework import status, generics
 from rest_framework.views import APIView
-from django.http import HttpResponse
 
 
 # Create your views here.
 def HomePage(request):
-    return HttpResponse("Hello World!")
+    return render(request, 'index.html')
 
 
 class LanguageList(generics.ListAPIView):

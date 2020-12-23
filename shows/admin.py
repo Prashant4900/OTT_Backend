@@ -35,6 +35,7 @@ class GenreAdmin(admin.ModelAdmin):
 class ShowsAdmin(admin.ModelAdmin):
     list_display = ('ShowTitle', 'ShowDesc', 'ShowReleaseDate')
     list_display_links = ('ShowTitle',)
+    filter_horizontal = ('Genre',)
     list_filter = (
         'ShowReleaseDate',
         'Banner',

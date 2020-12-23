@@ -1,5 +1,5 @@
 from django.db import models
-from smart_selects.db_fields import ChainedManyToManyField
+from smart_selects.db_fields import ChainedManyToManyField, ChainedForeignKey
 
 
 # Create your models here.
@@ -54,7 +54,7 @@ class ShowsList(models.Model):
     Banner = models.BooleanField(default=False)
     Popular = models.BooleanField(default=False)
     Audio = models.ForeignKey(Language, on_delete=models.CASCADE, related_name='Audio')
-    Genre = models.ForeignKey(Genres, on_delete=models.CASCADE, related_name='Genre', verbose_name='Category')
+    Genre = models.ManyToManyField(Genres, related_name='Genre', verbose_name='Category')
     platform = models.ForeignKey(Platform, on_delete=models.CASCADE, related_name='Platform')
     ShowDesc = models.TextField(verbose_name='Description')
     ShowReleaseDate = models.DateTimeField(verbose_name='Release Date')
@@ -95,12 +95,13 @@ class EpisodeList(models.Model):
     EpisodeLink = models.URLField()
     EpisodeReleaseDate = models.DateTimeField()
     Show = models.ForeignKey(ShowsList, on_delete=models.CASCADE, related_name='Show', default='')
-    Season = ChainedManyToManyField(
-        SeasonsList,
-        horizontal=True,
-        related_name='Season',
+    Season = ChainedForeignKey(
+        "SeasonsList",
+        show_all=False,
+        auto_choose=True,
         chained_field='Show',
-        chained_model_field='Series'
+        chained_model_field='Series',
+        default=""
     )
 
     class Meta:

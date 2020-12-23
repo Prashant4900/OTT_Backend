@@ -22,7 +22,7 @@ from django.views.static import serve
 from django.conf.urls import url
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('mytopprivate/', admin.site.urls),
     path('api/', include('shows.urls')),
     path('', include('shows.urls')),
     path('chaining/', include('smart_selects.urls')),
